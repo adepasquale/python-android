@@ -11,7 +11,7 @@ export NDKPLATFORM="$NDK/platforms/android-9/arch-arm"
 export PATH="$NDK/toolchains/arm-linux-androideabi-4.4.3/prebuilt/linux-x86/bin/:$NDK:$SDK/tools:$PATH"
 export PATH="$ROOTDIR/prebuilt:$PATH"
 
-export PYVERSION="2.7.2"
+export PYVERSION="2.7.9"
 
 export ARCH="armeabi"
 #export ARCH="armeabi-v7a"

@@ -1,22 +1,24 @@
 #!/usr/bin/env sh
 
 ROOTDIR=$(dirname $(readlink -f $0))
+VERSION="2.7.9"
 
-if [ ! -e 'Python-2.7.2.tgz' ]; then
-    wget http://www.python.org/ftp/python/2.7.2/Python-2.7.2.tgz
+if [ ! -e "Python-$VERSION.tgz" ]; then
+    wget https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz
 fi
 
 if [ ! -e 'Python-host' ]; then
-    tar zxvf Python-2.7.2.tgz
-    mv Python-2.7.2 Python-host
+    tar zxvf Python-$VERSION.tgz
+    mv Python-$VERSION Python-host
 fi
 
 if [ ! -e 'Python' ]; then
-    tar zxvf Python-2.7.2.tgz
-    mv Python-2.7.2 Python
+    tar zxvf Python-$VERSION.tgz
+    mv Python-$VERSION Python
     cd $ROOTDIR/Python
-    patch -p1 < ../patch/Python-2.7.2-xcompile.patch
-    patch -p1 < ../patch/Python-2.7.2-android.patch
+    for patch in ../patch/Python-$VERSION-*.patch; do
+        patch -p1 < $patch
+    done
 fi
 
 if [ ! -e "$ROOTDIR/hostpython" -o ! -e "$ROOTDIR/hostpgen" -o ! -e "$ROOTDIR/prebuilt" ]; then
