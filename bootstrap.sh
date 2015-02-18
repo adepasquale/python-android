@@ -29,7 +29,7 @@ if [ ! -e "$ROOTDIR/hostpython" -o ! -e "$ROOTDIR/hostpgen" -o ! -e "$ROOTDIR/pr
     mv python $ROOTDIR/hostpython
     mv Parser/pgen $ROOTDIR/hostpgen
     curl http://python-distribute.org/distribute_setup.py | $ROOTDIR/hostpython
-    curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | $ROOTDIR/hostpython
+    curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | $ROOTDIR/hostpython
     $ROOTDIR/prebuilt/bin/pip install virtualenv
     $ROOTDIR/prebuilt/bin/pip install virtualenvwrapper
     make distclean
